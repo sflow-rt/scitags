@@ -20,11 +20,13 @@
     <main class="container-fluid" role="main">
        <p>Maintains map of registered scitags values, see <a href="https://blog.sflow.com/2022/11/scientific-network-tags-scitags.html">Scientific network tags (scitags)</a></p>
        <pre class="bg-light"><code>map:[bits:ip6flowlabel:261884]:scitag</code></pre>
-       <p>Use the above expression in flow definitions to extract and decode registered scitag values</p>
+       <p>Use the above expression in flow definitions to extract and decode registered scitag values from IPv6 flow label</p>
+       <pre class="bg-light"><code>map:ip6scitag:scitag</code></pre>
+       <p>Use the above expression in flow definitions decode registered scitag values from IPv6 header extension</p>
     </main>
     <footer class="footer page-footer border-top mt-3">
        <div class="footer-copyright text-center py-2">
-         <small class="text-muted">Copyright &copy; 2023 InMon Corp. ALL RIGHTS RESERVED</small>
+         <small class="text-muted">Copyright &copy; 2023-2024 InMon Corp. ALL RIGHTS RESERVED</small>
        </div>
     </footer>
   </body>

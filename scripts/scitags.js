@@ -1,8 +1,10 @@
 // author: InMon Corp.
-// version: 1.0
-// date: 9/11/2023
+// version: 1.1
+// date: 11/17/2024
 // description: Create map of registered tags from scitags.org
-// copyright: Copyright (c) 2023 InMon Corp. ALL RIGHTS RESERVED
+// copyright: Copyright (c) 2023-2024 InMon Corp. ALL RIGHTS RESERVED
+
+var url = getSystemProperty('scitags.url') || 'https://www.scitags.org/api.json';
 
 function reverseBits(val,n) {
   var bits = val.toString(2).padStart(n, '0');
@@ -17,7 +19,7 @@ function flowlabel(expId,activityId) {
 function updateMap() {
   var tags, parsed;
   try {
-    tags = http('https://www.scitags.org/api.json');
+    tags = http(url);
     parsed = JSON.parse(tags);
   } catch(e) {
     logWarning('SCITAGS http get failed ' + e);
@@ -34,7 +36,7 @@ function updateMap() {
       var activityName = activity.activityName;
       var activityId = activity.activityId;
       var key = (expName + '.' + activityName).replace(/ /g,"_");
-      map[key] = [ flowlabel(expId,activityId) ];
+      map[key] = [ flowlabel(expId,activityId), expId+'.'+activityId ];
     });
   });
 
